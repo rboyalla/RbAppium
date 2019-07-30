@@ -1,0 +1,6 @@
+
+
+study all appium driver mthods
+
+AppiumDriver.launchApp
+closeApp(
