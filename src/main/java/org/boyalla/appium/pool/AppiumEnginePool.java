@@ -22,8 +22,8 @@ public class AppiumEnginePool extends GenericObjectPool<FwAppiumDriver> {
         super(factory);
         //GenericObjectPoolConfig config = new GenericObjectPoolConfig();
         //config.setMaxTotal(3);
-        setMaxTotal(3);
-        setMinIdle(3);
+        setMaxTotal(30);
+        setMinIdle(30);
     }
 
     @Override

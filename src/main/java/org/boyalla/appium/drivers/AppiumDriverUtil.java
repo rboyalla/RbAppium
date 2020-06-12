@@ -23,17 +23,17 @@ import org.openqa.selenium.remote.DesiredCapabilities;
  */
 public class AppiumDriverUtil {
 
-    public static FwAppiumDriver gertIosDriver(String appName, String ipAddress, Integer port, String simType, 
+    public static FwAppiumDriver gertIosDriver(String appName, String ipAddress, Integer port, String simType,
             int simNumber, String osVersion
     )
             throws MalformedURLException, InterruptedException, IOException {
-        
-         final String simName = simType + simNumber;
-        
+
+        final String simName = simType + simNumber;
+
         //need to get random port
-       // int port=11;
-       //create sim and do folloing
-        String uid=SimulatorMnager.cloneSimulator(simType, simName);
+        // int port=11;
+        //create sim and do folloing
+        String uid = SimulatorMnager.cloneSimulator(simType, simName);
         //String ipAddress = "127.0.0.1";
         AppiumDriverLocalService service = AppiumIOSServer.startNGetAppium(ipAddress, port);
         DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -41,14 +41,14 @@ public class AppiumDriverUtil {
         capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, osVersion);
         //capabilities.setCapability(MobileCapabilityType.CLEAR_SYSTEM_FILES, "true");
         capabilities.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, "180");
-        //capabilities.setCapability("isHeadless", true);
+        capabilities.setCapability("isHeadless", false);
         capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "XCUITest");
-      //  capabilities.setCapability(MobileCapabilityType.NO_RESET, true);
-       // capabilities.setCapability(MobileCapabilityType.FULL_RESET, false);
+        //  capabilities.setCapability(MobileCapabilityType.NO_RESET, true);
+        // capabilities.setCapability(MobileCapabilityType.FULL_RESET, false);
         //capabilities.setCapability("useNewWDA", false);
         // capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "Safari");
-        
-          capabilities.setCapability(MobileCapabilityType.UDID, uid);
+
+        capabilities.setCapability(MobileCapabilityType.UDID, uid);
         capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, simType);
         // capabilities.setCapability(MobileCapabilityType.UDID, uidd);
 
@@ -62,12 +62,8 @@ public class AppiumDriverUtil {
         // AppiumDriver<WebElement> driver = new AppiumDriver<WebElement>(url,
         // capabilities);
         // AppiumDriver<WebElement> driver = new AppiumDriver(service, capabilities);
-        FwAppiumDriver driver = new FwAppiumDriver(service,simName, capabilities);
+        FwAppiumDriver driver = new FwAppiumDriver(service, simName, capabilities);
         //
-        
-        
-       
-        
 
         return driver;
 

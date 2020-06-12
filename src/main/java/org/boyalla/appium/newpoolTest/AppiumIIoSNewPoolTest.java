@@ -47,6 +47,21 @@ public class AppiumIIoSNewPoolTest {
      */
     public static void main(String[] args) throws InterruptedException, IOException, ExecutionException {
 
+        /*
+        
+        
+        
+        
+        
+        {
+"app" :"/Users/raveendraboyalla/rb/run/apps/TestAppRB.app",
+"platformName" : "iOS",
+"platformVersion" : "12.4",
+"deviceName" : "iPhone Xs",
+"udid" : "6B405220-FF8C-4CE6-A153-74A31FDE0D5E"
+}
+        
+         */
         String[] maxProcessMacCommand = {"echo", "tanusha", "|", "sudo", "-S", "launchctl", "limit", "maxproc", "2000",
             "2500"};
         // SimulatorMnager.executeCommand(maxProcessMacCommand);
@@ -91,15 +106,15 @@ public class AppiumIIoSNewPoolTest {
 //            }
             System.out.println("running  tests:" + noOfTests);
 
-          //  for (int i = 0; i < noOfSims; i++) {
-            Future<Boolean> call0 = executor.submit(getTestThread(application, ipAddress, simType, simVersion));
-            Future<Boolean> call1 = executor.submit(getTestThread(application, ipAddress, simType, simVersion));
+            for (int i = 0; i < 1; i++) {
+                Future<Boolean> call0 = executor.submit(getTestThread(application, ipAddress, simType, simVersion));
+                //Future<Boolean> call1 = executor.submit(getTestThread(application, ipAddress, simType, simVersion));
 //            Future<Boolean> call2 = executor.submit(getTestThread(application, ipAddress, simType, simVersion));
 //            Future<Boolean> call3 = executor.submit(getTestThread(application, ipAddress, simType, simVersion));
 //            Future<Boolean> call4 = executor.submit(getTestThread(application, ipAddress, simType, simVersion));
 //
-            // executor.execute(getTestThread(application, ipAddress, simName + "1", simVersion));
-           //    }
+                // executor.execute(getTestThread(application, ipAddress, simName + "1", simVersion));
+            }
             //call0.get();
 //            call1.get();
 //            call2.get();
